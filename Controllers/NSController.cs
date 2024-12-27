@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NS_ASP.Models;
+using NS_ASP.Models.ViewModels;
 using NS_ASP.Services.Interfaces;
 
 namespace NS_ASP.Controllers;
@@ -26,8 +27,19 @@ public class NSController : Controller
     }
 
     [HttpPost]
-    public IActionResult Translation(int system, int number)
+    public IActionResult Translation(TranslateViewModel viewModel)
     {
-        return View();
+        if(ModelState.IsValid)
+        {
+            if(viewModel.SystemOfNumber == null)
+            {
+                viewModel.SystemOfNumber = "10";
+            }
+
+            translationService.Translate(viewModel);
+            return Content("OK");
+        }
+        
+        return View(viewModel);
     }
 }

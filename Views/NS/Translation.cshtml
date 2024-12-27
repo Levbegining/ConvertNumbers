@@ -1,13 +1,14 @@
-﻿@model int
+﻿@model NS_ASP.Models.ViewModels.TranslateViewModel
 
 <div>
     <div>
-        <h1>Translation</h1>
+        <h1>Перевод</h1>
     </div>
     <div>
-        <form>
-            <input name="system" placeholder="system" />
-            <input name="number" placeholder="number" />
+        <form asp-action="Translation" method="post">
+            <input asp-for="System" placeholder="система счисления" />
+            <input asp-for="Number" placeholder="число" />
+            <input asp-for="SystemOfNumber" placeholder="с.с. числа" />
             <input type="submit" value="Перевести" />
         </form>
     </div>
