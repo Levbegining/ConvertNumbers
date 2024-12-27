@@ -1,9 +1,18 @@
-﻿
+﻿@model string
 <div>
     <h1>Перевод систем счисления</h1>
 </div>
 <div>
+    @if (Model != "-1")
+    {
+        <h3>Результат перевода:</h3>
+        <h1>@Model</h1>
+    }
+
     <form asp-action="Translation" method="post">
-        <input type="submit" value="Перейти" />
+        <input name="number" placeholder="number" />
+        <input name="currentSystem" placeholder="currentSystem" />
+        <input name="system" placeholder="system">
+        <input type="submit" value="Перевести" />
     </form>
 </div>

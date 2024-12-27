@@ -14,20 +14,14 @@ public class NSController : Controller
         this.translationService = translationService;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string result = "-1")
     {
-        return View(); 
+        return View("Index", result); 
     }
-
-    [HttpGet]
-    public IActionResult Translation()
-    {
-        return View();
-    }
-
     [HttpPost]
-    public IActionResult Translation(int system, int number)
+    public IActionResult Translation(string number, int currentSystem, int system)
     {
-        return View();
+        var result = translationService.Translate(number, currentSystem, system);
+        return View("Index", result);
     }
 }
