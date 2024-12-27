@@ -1,7 +1,12 @@
+using System.Transactions;
+using NS_ASP.Services.Interfaces;
+using NS_ASP.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ITranslationService, TranslationService>();
 
 var app = builder.Build();
 
@@ -22,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=NS}/{action=Index}/{id?}");
 
 app.Run();
