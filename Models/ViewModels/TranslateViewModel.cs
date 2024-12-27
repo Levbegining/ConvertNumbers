@@ -10,8 +10,10 @@ public class TranslateViewModel
     [RegularExpression(@"[2-9]|[1-2][\d]|3[0-6]")]
     public string System { get; set; }
 
+    [Required]
     public int Number { get; set; }
 
+    [Required]
     [RegularExpression(@"[2-9]|[1-2][\d]|3[0-6]")]
     public string SystemOfNumber { get; set; }
 }

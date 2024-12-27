@@ -19,25 +19,18 @@ public class NSController : Controller
     {
         return View(); 
     }
-
-    [HttpGet]
-    public IActionResult Translation()
-    {
-        return View();
-    }
-
     [HttpPost]
     public IActionResult Translation(TranslateViewModel viewModel)
     {
         if(ModelState.IsValid)
         {
-            if(viewModel.SystemOfNumber == null)
-            {
-                viewModel.SystemOfNumber = "10";
-            }
+            // if(viewModel.SystemOfNumber == null)
+            // {
+            //     viewModel.SystemOfNumber = "10";
+            // }
 
-            translationService.Translate(viewModel);
-            return Content("OK");
+            
+            return Content(translationService.Translate(viewModel));
         }
         
         return View(viewModel);

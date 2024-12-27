@@ -6,6 +6,9 @@
     </div>
     <div>
         <form asp-action="Translation" method="post">
+            <span asp-validation-for="System"></span>
+            <span asp-validation-for="Number"></span>
+            <span asp-validation-for="SystemOfNumber"></span>
             <input asp-for="System" placeholder="система счисления" />
             <input asp-for="Number" placeholder="число" />
             <input asp-for="SystemOfNumber" placeholder="с.с. числа" />

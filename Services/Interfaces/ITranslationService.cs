@@ -5,5 +5,5 @@ namespace NS_ASP.Services.Interfaces;
 
 public interface ITranslationService
 {
-    void Translate(TranslateViewModel viewModel);
+    string Translate(TranslateViewModel viewModel);
 }
