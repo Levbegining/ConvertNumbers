@@ -1,11 +1,19 @@
 ﻿@model NS_ASP.Models.ViewModels.TranslateViewModel
 
+
+@if (ViewData.ModelState.IsValid == false)
+{
+    foreach (var error in ViewData.ModelState.Values.SelectMany(value => value.Errors))
+    {
+        <p>@error.ErrorMessage</p>
+    }
+}
 <div>
     <div>
         <h1>Перевод</h1>
     </div>
     <div>
-        <form asp-action="Translation" method="post">
+        <form asp-action="TranslationPost" method="post">
             <span asp-validation-for="System"></span>
             <span asp-validation-for="Number"></span>
             <span asp-validation-for="SystemOfNumber"></span>
@@ -17,4 +25,12 @@
             <input type="submit" value="Перевести" />
         </form>
     </div>
+    @if (@ViewBag.Result != null)
+    {
+        <div style="display:flex; flex-direction: column; align-items: center; margin-top: 40px;">
+            Результат перевода:
+            <h1 style="text-align: center;">@ViewBag.Result</h1>
+        </div>
+    }
+
 </div>

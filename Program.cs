@@ -27,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=NS}/{action=Index}/{id?}");
+    pattern: "{controller=Convert}/{action=Translation}/{id?}");
 
 app.Run();

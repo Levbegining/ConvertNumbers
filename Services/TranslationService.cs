@@ -15,16 +15,16 @@ public class TranslationService : ITranslationService
             {10, "A"}, {11, "B"}, {12, "C"},
             {13, "D" }, {14, "E"}, {15, "F"}
         };
-     Dictionary<string, int> dictBinaryToOctal = new Dictionary<string, int>()
-        {
-            {"000", 0}, {"00", 0}, {"0", 0}, {"001", 1}, {"01", 1}, {"1", 1 }, {"10", 2 },
-            {"010", 2},{"011", 3}, {"11", 3}, {"100", 4 }, {"101", 5}, {"110", 6}, {"111", 7}
-        };
-     Dictionary<int, string> dictOctalToBinary = new Dictionary<int, string>()
-        {
-            {0, "000"}, {1, "001"}, {2, "010"}, {3, "011"},
-            {4,"100" }, {5, "101"}, {6, "110"}, {7, "111"}
-        };
+    //  Dictionary<string, int> dictBinaryToOctal = new Dictionary<string, int>()
+    //     {
+    //         {"000", 0}, {"00", 0}, {"0", 0}, {"001", 1}, {"01", 1}, {"1", 1 }, {"10", 2 },
+    //         {"010", 2},{"011", 3}, {"11", 3}, {"100", 4 }, {"101", 5}, {"110", 6}, {"111", 7}
+    //     };
+    //  Dictionary<int, string> dictOctalToBinary = new Dictionary<int, string>()
+    //     {
+    //         {0, "000"}, {1, "001"}, {2, "010"}, {3, "011"},
+    //         {4,"100" }, {5, "101"}, {6, "110"}, {7, "111"}
+    //     };
      Dictionary<string, int> dictNumToDecimal = new Dictionary<string, int>()
         {
             {"0", 0 }, {"1", 1}, {"2", 2 }, {"3", 3}, {"4", 4},
@@ -47,10 +47,8 @@ public class TranslationService : ITranslationService
         }
         else{
             var iRes = NumToDecimalSystem(num, currentSystem);
-            NumFromDecimalSystemToOther(iRes, system);
+            return    NumFromDecimalSystemToOther(iRes, system);
         }
-        
-        return "";
     }
     private bool IsCorrect(string num, int currentSystem, int system)
     {
@@ -75,11 +73,11 @@ public class TranslationService : ITranslationService
             }
             else
             {
-                res += b;
+                res = b + res;
             }
             num = num / syst;
         }
-        res = Reverse(res);
+        //res = Reverse(res);
         return res;
     }
     private int NumToDecimalSystem(string _num, int currentSystem)
@@ -119,38 +117,36 @@ public class TranslationService : ITranslationService
         return res;
     }
     #endregion
-    private int BinaryToOctal(int num)
-    {
-        string res = "";
-        while (num > 0)
-        {
-            res = dictBinaryToOctal[(num % 1000).ToString()] + res;
-            num = num / 1000;
-        }
-        return int.Parse(res);
-    }
-    private int OctalToBinary(int num)
-    {
-        string res = "";
-        while (num > 0)
-        {
-            res = dictOctalToBinary[num % 10] + res;
-            num = num / 10;
-        }
-        res = res.TrimStart("0"[0]);
-        return int.Parse(res);
-    }
-    private string Reverse(string str)
-    {
-        string res = "";
-        var arr = str.ToCharArray();
-        for (int i = arr.Length - 1; i >= 0; i--)
-        {
-            res += arr[i];
-        }
-        return res;
-    }
-
-    
+    // private int BinaryToOctal(int num)
+    // {
+    //     string res = "";
+    //     while (num > 0)
+    //     {
+    //         res = dictBinaryToOctal[(num % 1000).ToString()] + res;
+    //         num = num / 1000;
+    //     }
+    //     return int.Parse(res);
+    // }
+    // private int OctalToBinary(int num)
+    // {
+    //     string res = "";
+    //     while (num > 0)
+    //     {
+    //         res = dictOctalToBinary[num % 10] + res;
+    //         num = num / 10;
+    //     }
+    //     res = res.TrimStart("0"[0]);
+    //     return int.Parse(res);
+    // }
+    // private string Reverse(string str)
+    // {
+    //     string res = "";
+    //     var arr = str.ToCharArray();
+    //     for (int i = arr.Length - 1; i >= 0; i--)
+    //     {
+    //         res += arr[i];
+    //     }
+    //     return res;
+    // }
 }
 
