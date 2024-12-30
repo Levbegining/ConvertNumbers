@@ -1,22 +1,20 @@
 ﻿@model NS_ASP.Models.ViewModels.TranslateViewModel
 
 
-@if (ViewData.ModelState.IsValid == false)
-{
-    foreach (var error in ViewData.ModelState.Values.SelectMany(value => value.Errors))
-    {
-        <p>@error.ErrorMessage</p>
-    }
-}
+
 <div>
     <div>
         <h1>Перевод</h1>
     </div>
     <div>
         <form asp-action="TranslationPost" method="post">
-            <span asp-validation-for="System"></span>
-            <span asp-validation-for="Number"></span>
-            <span asp-validation-for="SystemOfNumber"></span>
+            @if (ViewData.ModelState.IsValid == false)
+            {
+                foreach (var error in ViewData.ModelState.Values.SelectMany(value => value.Errors))
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            }
             <input asp-for="Number" placeholder="число" />
             <input asp-for="SystemOfNumber" placeholder="с.с. числа" />
             <input asp-for="System" placeholder="система счисления" />
